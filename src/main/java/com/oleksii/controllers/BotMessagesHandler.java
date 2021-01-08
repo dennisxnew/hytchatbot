@@ -12,7 +12,6 @@ import com.oleksii.creators.ActivityCreator;
 import com.oleksii.creators.ConversationCreator;
 import com.oleksii.senders.ResourceResponseSender;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +29,7 @@ public class BotMessagesHandler {
   private List<ResourceResponse> responses;
 
   @PostMapping(path = "")
-  public List<ResourceResponse> create(@RequestBody @Valid @JsonDeserialize(using = DateTimeDeserializer.class) Activity activity) {
+  public List<ResourceResponse> create(@RequestBody @JsonDeserialize(using = DateTimeDeserializer.class) Activity activity) {
     ConnectorClient connector = new ConnectorClientImpl(activity.serviceUrl(), credentials);
 
     Activity echoActivity = ActivityCreator.createEchoActivity(activity);

@@ -55,6 +55,7 @@ public class BotMessagesHandler {
 
   @GetMapping("/test")
   public String test(){
+    log.info("test!");
     return "test";
   }
 }

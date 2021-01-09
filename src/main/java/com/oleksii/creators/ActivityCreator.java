@@ -21,7 +21,7 @@ public class ActivityCreator {
   }
 
   public static Activity createEchoActivity(Activity activity) {
-    return createEmptyActivity(activity).withText("嗨! " + activity.name() + "!" + echoResponsePart + activity.text());
+    return createEmptyActivity(activity).withText("嗨!" + echoResponsePart + activity.text());
   }
 
   private static Activity createEmptyActivity(Activity activity) {

@@ -34,14 +34,14 @@ public class BotMessagesHandler {
     ConnectorClient connector = new ConnectorClientImpl(activity.serviceUrl(), credentials);
 
     Activity echoActivity = ActivityCreator.createEchoActivity(activity);
-    Activity checkedActivity = ActivityCreator.createSpellCheckedActivity(activity);
+//    Activity checkedActivity = ActivityCreator.createSpellCheckedActivity(activity);
     Conversations conversation = ConversationCreator.createResponseConversation(connector);
 
     ResourceResponse echoResponse = ResourceResponseSender.send(conversation, activity, echoActivity);
     responses.add(echoResponse);
 
-    ResourceResponse spellCheckedResponse = ResourceResponseSender.send(conversation, activity, checkedActivity);
-    responses.add(spellCheckedResponse);
+//    ResourceResponse spellCheckedResponse = ResourceResponseSender.send(conversation, activity, checkedActivity);
+//    responses.add(spellCheckedResponse);
 
     return responses;
   }

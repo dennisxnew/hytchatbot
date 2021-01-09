@@ -12,6 +12,9 @@ import com.oleksii.creators.ActivityCreator;
 import com.oleksii.creators.ConversationCreator;
 import com.oleksii.senders.ResourceResponseSender;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,17 +32,21 @@ public class BotMessagesHandler {
   @Autowired
   private List<ResourceResponse> responses;
 
+  private static Logger log = LogManager.getLogger(BotMessagesHandler.class);
+
   @PostMapping(path = "")
   public List<ResourceResponse> create(@RequestBody Activity activity) {
-    ConnectorClient connector = new ConnectorClientImpl(activity.serviceUrl(), credentials);
+    log.info("bot start");
 
+    ConnectorClient connector = new ConnectorClientImpl(activity.serviceUrl(), credentials);
+    log.info("bot prepare to echo");
     Activity echoActivity = ActivityCreator.createEchoActivity(activity);
 //    Activity checkedActivity = ActivityCreator.createSpellCheckedActivity(activity);
     Conversations conversation = ConversationCreator.createResponseConversation(connector);
 
     ResourceResponse echoResponse = ResourceResponseSender.send(conversation, activity, echoActivity);
     responses.add(echoResponse);
-
+    log.info("bot end");
 //    ResourceResponse spellCheckedResponse = ResourceResponseSender.send(conversation, activity, checkedActivity);
 //    responses.add(spellCheckedResponse);
 

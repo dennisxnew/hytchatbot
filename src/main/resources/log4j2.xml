@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 優先等級: FATAL > ERROR > WARN > INFO > DEBUG -->
+<Configuration status="WARN">
+  <!-- 參數設定 -->
+  <properties>  
+      <property name="home">D:</property> 
+  </properties> 
+  <Appenders>
+  	<!-- 1. 列印在Console的Appender -->
+    <Console name="stdout" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c{1.} - %m%n"/>
+    </Console>
+    <!-- 2. RollingFile記錄所有Log的Appender-->
+    <RollingFile name="RollingFile" fileName="${home}/bot.log" filePattern="${home}/bot.log.%d{yyyy-MM-dd}">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c{1.} : %m%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="RollingFile"/>
+      <AppenderRef ref="stdout"/>
+    </Root>
+  </Loggers>
+</Configuration>

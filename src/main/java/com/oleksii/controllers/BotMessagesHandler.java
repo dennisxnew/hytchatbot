@@ -30,7 +30,7 @@ public class BotMessagesHandler {
   private List<ResourceResponse> responses;
 
   @PostMapping(path = "")
-  public List<ResourceResponse> create(@RequestBody @JsonDeserialize(using = DateTimeDeserializer.class) Activity activity) {
+  public List<ResourceResponse> create(@RequestBody Activity activity) {
     ConnectorClient connector = new ConnectorClientImpl(activity.serviceUrl(), credentials);
 
     Activity echoActivity = ActivityCreator.createEchoActivity(activity);

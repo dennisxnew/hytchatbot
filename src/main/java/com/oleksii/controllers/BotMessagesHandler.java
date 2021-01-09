@@ -46,7 +46,7 @@ public class BotMessagesHandler {
     return responses;
   }
 
-  @GetMapping("test")
+  @GetMapping("/test")
   public String test(){
     return "test";
   }

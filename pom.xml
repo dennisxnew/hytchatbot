@@ -12,6 +12,7 @@
   <artifactId>hyt-bot</artifactId>
   <version>1.0.0</version>
   <name>hyt-bot</name>
+  <packaging>war</packaging>
 
   <properties>
     <java.version>1.8</java.version>

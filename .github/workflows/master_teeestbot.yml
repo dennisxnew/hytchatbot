@@ -29,4 +29,4 @@ jobs:
         app-name: 'teeestbot'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_8149f8ba91ee42eb80afa4f46e1c05a8 }}
-        package: '${{ github.workspace }}/target/*.jar'
+        package: '${{ github.workspace }}/target/*.war'
